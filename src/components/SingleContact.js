@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Button from './Button';
+
 
 
   
@@ -11,7 +13,9 @@ function SingleContact(props) {
             <p>
                 {props.one.id}
             </p>
+            
         </div>
+        
     )
 }
 

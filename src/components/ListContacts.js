@@ -10,7 +10,8 @@ function ListContacts(props){
              { props.contacts.map((contact, index) =>
                 <SingleContact key={ contact.id }
                                 one={ contact }
-                                index = {index} />
+                                index = {index}
+                                onePerson = {props.onePerson} />
             ) }
         </div>
 

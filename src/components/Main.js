@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import _ from 'lodash';
 import ListContacts from './ListContacts';
 import Search from './Search';
@@ -17,6 +18,7 @@ class App extends Component {
         fetch('https://jsonplaceholder.typicode.com/users')
                 .then(response => response.json())
                 .then(json => {
+                    console.log(json)
                     this.setState({users: json})
                 })
     }
@@ -53,6 +55,12 @@ class App extends Component {
         this.setState({users: sort})
     }
 
+
+    onePerson = () => {
+        console.log('check');
+    }
+
+
   render() {
       
     return (
@@ -64,7 +72,8 @@ class App extends Component {
             <Button handleButtonClick = {this.sortDown} name = {"Sort down"}/>
 
             <h1>Contacts:</h1>
-            <ListContacts contacts = { this.state.users} />
+            <ListContacts contacts = { this.state.users} 
+                        onePerson = {this.onePerson} />
             <div className="found">
                 {this.state.found.map((element, index) => <div key={ index }> {element} </div>) }
             </div>
