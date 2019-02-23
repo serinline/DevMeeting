@@ -7,7 +7,9 @@ import Main from './components/Main';
 class App extends Component {
   render() {
     return (
-      <Main />
+      <div className="output">
+        <Main />
+      </div>
     );
   }
 }

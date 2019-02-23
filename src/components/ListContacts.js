@@ -1,28 +1,16 @@
 import React, { Component } from 'react';
 import SingleContact from './SingleContact';
 
-const contacts = [
-    {
-      name: "Sara",
-      id: 1
-    },
-    {
-      name: "Mark",
-      id: 2
-    },
-    {
-      name: "Emma",
-      id: 3
-    }
-  ]
 
 function ListContacts(props){
+    console.log(props.contacts)
     return (
 
         <div>
-             { contacts.map(contact =>
+             { props.contacts.map((contact, index) =>
                 <SingleContact key={ contact.id }
-                                one={ contact } />
+                                one={ contact }
+                                index = {index} />
             ) }
         </div>
 
@@ -33,13 +21,13 @@ export default ListContacts;
 
 
 
-function BasicRender(props){
-    let contactsRender = contacts.map((element, index) => 
-      <div key={index}>
-          <div>{element.name}</div>
-          <div>{element.id}</div>
-      </div>)
-    return (
-        <div> {contactsRender} </div>
-    )
-}
+// function BasicRender(props){
+//     let contactsRender = contacts.map((element, index) => 
+//       <div key={index}>
+//           <div>{element.name}</div>
+//           <div>{element.id}</div>
+//       </div>)
+//     return (
+//         <div> {contactsRender} </div>
+//     )
+// }
