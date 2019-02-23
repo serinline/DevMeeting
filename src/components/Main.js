@@ -8,22 +8,17 @@ import './Main.css';
 class App extends Component {
 
     state = {
-        users: [
-            {
-              name: "Sara",
-              id: 1,
-            },
-            {
-              name: "Mark",
-              id: 2,
-            },
-            {
-              name: "Emma",
-              id: 3,
-            }
-          ],
-        found: '', 
+        users: [],
+        found: [], 
         sort: 'acs'
+    }
+
+    componentDidMount(){
+        fetch('https://jsonplaceholder.typicode.com/users')
+                .then(response => response.json())
+                .then(json => {
+                    this.setState({users: json})
+                })
     }
 
     handleInputChange = (event) => { 
@@ -35,11 +30,14 @@ class App extends Component {
       }
 
     handleButtonFind = (event) => {
-        this.state.users.map(element => {
-            if (element.name.includes(this.state.searching) === true){
-                this.setState({found: element.name})
-            }
-        })
+        let array = [];
+        
+            this.state.users.map(element => {
+                if (element.name.includes(this.state.searching) === true){
+                    array.push(element.name);
+                }
+            })
+            this.setState({found: array})
     }
 
 
@@ -68,7 +66,7 @@ class App extends Component {
             <h1>Contacts:</h1>
             <ListContacts contacts = { this.state.users} />
             <div className="found">
-                {this.state.found}
+                {this.state.found.map((element, index) => <div key={ index }> {element} </div>) }
             </div>
         </div>
         );

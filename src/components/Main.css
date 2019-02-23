@@ -4,10 +4,9 @@ body {
 
 
 .contacts {
-    text-align: center;
     align-items: center;
 }
 
 .found {
-    background-color: yellow;
+    color: navy;
 }
